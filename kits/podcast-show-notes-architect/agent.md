@@ -10,7 +10,7 @@ Podcast creators and their teams spend significant time after every recording wr
 
 After the agent runs, the state of the world is better in three ways: (1) a structured, machine-readable representation of the episode exists (summary, takeaways, quotes, topics), (2) a polished, SEO-ready show notes document is ready for immediate publication, and (3) a 9-part promotional Twitter/LinkedIn thread is ready to post.
 
-The two-stage architecture matters because it separates facts from formatting. The first stage extracts the episode's intellectual content into a reliable schema. The second and third stages use that verified structure to compose output — ensuring neither output format ever receives hallucinated content or misattributed quotes.
+The two-stage architecture matters because it separates facts from formatting. The first stage extracts the episode's intellectual content into a reliable schema. The second and third stages use that verified structure to compose output — using a structured extraction schema to reduce hallucination risk and avoid misattributed quotes.
 
 ---
 
@@ -40,10 +40,10 @@ The two-stage architecture matters because it separates facts from formatting. T
    - Consumes the transcript and all optional metadata from the trigger output.
    - Produces a structured JSON result containing:
      - `episode_summary` — 3-4 sentence episode overview.
-     - `key_takeaways` — exactly 5 impactful, actionable insights.
-     - `quotable_moments` — the 3 most shareable quotes with timestamp and speaker.
+     - `key_takeaways` — 5 impactful, actionable insights.
+     - `quotable_moments` — 3 shareable quotes with timestamp and speaker.
      - `topics_covered` — 5-8 concise topic tags.
-   - This node enforces schema-constrained output (Instructor-style), making all fields reliable for downstream consumption.
+   - This node enforces schema-constrained output using strict array size bounds (`minItems` and `maxItems`), making all fields reliable for downstream consumption.
 
 3. **Compose show notes (`LLMNode` / "Generate Show Notes")**
    - Runs in parallel with `Generate Social Thread` after the extraction stage completes.
@@ -108,7 +108,7 @@ On success, the caller should expect a JSON object with:
 
 - **Output constraints**
   - Must not invent topics, guests, or insights not present in the transcript.
-  - Social thread tweets must each be under 280 characters (enforced by prompt).
+  - A 9-part structure with tweets under 280 characters is requested via prompt (but not strictly enforced by the runtime).
   - Must not log, store, or repeat PII (from constitution).
 
 - **Operational limits**
@@ -168,7 +168,6 @@ Example invocation payload:
 | Timestamps show "~Early/Mid/Late" | No timestamp markers in transcript | Add [MM:SS] markers to transcript before submission |
 | Social thread tweets exceed 280 chars | Model did not follow character constraint | Adjust `generate-social-thread_system.md` to reinforce the limit |
 | JSON extraction fails | InstructorLLMNode misconfigured or schema mismatch | Verify model config and schema in `InstructorLLMNode_101` settings |
-| Request fails at trigger | Missing required `transcript` field | Ensure payload includes `transcript` as a non-empty string |
 | One of the two outputs is missing | Response mapping misconfigured | Verify both `LLMNode_202` and `LLMNode_303` are listed in `needs` and mapped in `outputMapping` |
 | Slow response times | Large transcript + 3 sequential/parallel LLM calls | Use a faster model variant; consider chunking very long transcripts |
 

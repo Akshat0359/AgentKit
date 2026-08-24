@@ -8,7 +8,7 @@
 
 > **Turn any podcast transcript into publication-ready show notes and a 9-part promotional thread — in seconds.**
 
-Podcast creators spend 60–90 minutes per episode writing show notes, hunting for great quotes, and crafting social content. This template automates the entire workflow with a single API call.
+Podcast creators spend 60–90 minutes per episode writing show notes, hunting for great quotes, and crafting social content. This template automates the entire workflow with a single API call, using a structured extraction schema to reduce hallucination risk.
 
 ---
 
@@ -16,7 +16,7 @@ Podcast creators spend 60–90 minutes per episode writing show notes, hunting f
 
 Given a raw podcast transcript, this flow:
 
-1. **Extracts structured intelligence** — episode summary, 5 key takeaways, 3 timestamped quotable moments, and 5–8 topic tags.
+1. **Extracts structured intelligence** — episode summary, up to 5 key takeaways, up to 3 timestamped quotable moments, and up to 8 topic tags.
 2. **Generates publication-ready show notes** — a complete Markdown document with SEO-optimized title, formatted quotes, numbered takeaways, and topic hashtags.
 3. **Generates a promotional social thread** — a 9-part Twitter/LinkedIn thread with a hook, context, takeaways, a pull-quote, and a CTA.
 
@@ -140,7 +140,6 @@ For each node, select your preferred LLM model and provide credentials in Lamati
 | No timestamps in show notes quotes | Add `[MM:SS]` markers to your transcript before submitting |
 | Generic or low-quality output | Provide a fuller transcript with clear speaker attribution |
 | Missing `social_thread` or `show_notes` in response | Verify both LLM nodes are correctly wired to the response node |
-| Request fails | Ensure `transcript` field is present and non-empty |
 
 ---
 
