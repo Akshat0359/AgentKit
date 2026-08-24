@@ -109,6 +109,7 @@ Just spoke with @SarahMitchell on the latest episode of The Founders Podcast...
 ## Setup
 
 ### Prerequisites
+
 - A [Lamatic.ai](https://lamatic.ai) account
 - An LLM provider API key (e.g., Gemini, OpenAI, Anthropic)
 

@@ -109,7 +109,7 @@ On success, the caller should expect a JSON object with:
 - **Output constraints**
   - Must not invent topics, guests, or insights not present in the transcript.
   - A 9-part structure with tweets under 280 characters is requested via prompt (but not strictly enforced by the runtime).
-  - Must not log, store, or repeat PII (from constitution).
+  - Must not log, store, or repeat PII (except for the minimum transcript-sourced fields required for the requested output, prohibiting secrets and unrelated identifiers).
 
 - **Operational limits**
   - Subject to model rate limits, timeouts, and token limits of the configured LLM provider.
