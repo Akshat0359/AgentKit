@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "generated": "2026-06-24T15:59:50.185Z",
   "repository": "https://github.com/Lamatic/AgentKit",
-  "count": 80,
+  "count": 79,
   "typeCounts": {
     "kit": 30,
     "bundle": 6,
-    "template": 44
+    "template": 43
   },
   "entries": [
     {
@@ -3009,57 +3009,6 @@
         "hasAgentMd": true,
         "hasReadme": true,
         "hasEnvExample": true,
-        "hasChatWidget": false,
-        "hasSearchWidget": false
-      }
-    },
-    {
-      "slug": "podcast-show-notes-architect",
-      "name": "Podcast Show Notes Architect",
-      "description": "Transforms raw podcast transcripts into publication-ready show notes and a 9-part promotional social media thread. Extracts episode summary, 5 key takeaways, 3 timestamped quotable moments, and topic tags using structured extraction, then generates both outputs in parallel.",
-      "version": "1.0.0",
-      "type": "template",
-      "tags": [
-        "podcast",
-        "content-creation",
-        "social-media",
-        "generative",
-        "automation"
-      ],
-      "author": {
-        "name": "Akshat Prabhakar",
-        "email": "akshat.prabhakar5903@gmail.com"
-      },
-      "steps": [
-        {
-          "id": "podcast-show-notes-architect",
-          "type": "mandatory"
-        }
-      ],
-      "links": {
-        "github": "https://github.com/Lamatic/AgentKit/tree/main/kits/podcast-show-notes-architect"
-      },
-      "path": "kits/podcast-show-notes-architect",
-      "flows": {
-        "count": 1,
-        "names": [
-          "podcast-show-notes-architect"
-        ]
-      },
-      "resources": {
-        "prompts": 6,
-        "scripts": 0,
-        "modelConfigs": 3,
-        "constitutions": 1,
-        "triggers": 0,
-        "memory": 0,
-        "tools": 0
-      },
-      "capabilities": {
-        "hasApps": false,
-        "hasAgentMd": true,
-        "hasReadme": true,
-        "hasEnvExample": false,
         "hasChatWidget": false,
         "hasSearchWidget": false
       }
